@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday ♥</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Login Section */
+        #login-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 1rem;
+        }
+
+        .birthday-text {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 300;
+            letter-spacing: clamp(4px, 1vw, 8px);
+            margin-bottom: 2rem;
+            animation: fadeInDown 2s ease;
+            text-align: center;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .heart {
+            color: #fff;
+            font-size: clamp(2rem, 6vw, 3rem);
+            animation: heartbeat 1.5s infinite;
+            margin: 0 0.5rem;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+        }
+
+        .sliding-images {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.2;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .slide {
+    position: absolute;
+    width: clamp(150px, 25vw, 250px);
+    height: clamp(150px, 25vw, 250px);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+    opacity: 0.8;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* First row - top */
+.slide:nth-child(1) { top: 2%; left: -250px; animation: slideRow1 30s infinite linear; animation-delay: 0s; }
+.slide:nth-child(2) { top: 2%; left: -250px; animation: slideRow1 30s infinite linear; animation-delay: -5s; }
+.slide:nth-child(3) { top: 2%; left: -250px; animation: slideRow1 30s infinite linear; animation-delay: -10s; }
+.slide:nth-child(4) { top: 2%; left: -250px; animation: slideRow1 30s infinite linear; animation-delay: -15s; }
+.slide:nth-child(5) { top: 2%; left: -250px; animation: slideRow1 30s infinite linear; animation-delay: -20s; }
+.slide:nth-child(6) { top: 2%; left: -250px; animation: slideRow1 30s infinite linear; animation-delay: -25s; }
+
+/* Second row */
+.slide:nth-child(7) { top: 20%; left: -250px; animation: slideRow2 35s infinite linear; animation-delay: 0s; }
+.slide:nth-child(8) { top: 20%; left: -250px; animation: slideRow2 35s infinite linear; animation-delay: -6s; }
+.slide:nth-child(9) { top: 20%; left: -250px; animation: slideRow2 35s infinite linear; animation-delay: -12s; }
+.slide:nth-child(10) { top: 20%; left: -250px; animation: slideRow2 35s infinite linear; animation-delay: -18s; }
+.slide:nth-child(11) { top: 20%; left: -250px; animation: slideRow2 35s infinite linear; animation-delay: -24s; }
+.slide:nth-child(12) { top: 20%; left: -250px; animation: slideRow2 35s infinite linear; animation-delay: -30s; }
+
+/* Third row */
+.slide:nth-child(13) { top: 38%; left: -250px; animation: slideRow1 32s infinite linear; animation-delay: 0s; }
+.slide:nth-child(14) { top: 38%; left: -250px; animation: slideRow1 32s infinite linear; animation-delay: -5s; }
+.slide:nth-child(15) { top: 38%; left: -250px; animation: slideRow1 32s infinite linear; animation-delay: -10s; }
+.slide:nth-child(16) { top: 38%; left: -250px; animation: slideRow1 32s infinite linear; animation-delay: -16s; }
+.slide:nth-child(17) { top: 38%; left: -250px; animation: slideRow1 32s infinite linear; animation-delay: -21s; }
+.slide:nth-child(18) { top: 38%; left: -250px; animation: slideRow1 32s infinite linear; animation-delay: -26s; }
+
+/* Fourth row */
+.slide:nth-child(19) { top: 56%; left: -250px; animation: slideRow2 33s infinite linear; animation-delay: 0s; }
+.slide:nth-child(20) { top: 56%; left: -250px; animation: slideRow2 33s infinite linear; animation-delay: -5s; }
+.slide:nth-child(21) { top: 56%; left: -250px; animation: slideRow2 33s infinite linear; animation-delay: -11s; }
+.slide:nth-child(22) { top: 56%; left: -250px; animation: slideRow2 33s infinite linear; animation-delay: -16s; }
+.slide:nth-child(23) { top: 56%; left: -250px; animation: slideRow2 33s infinite linear; animation-delay: -22s; }
+.slide:nth-child(24) { top: 56%; left: -250px; animation: slideRow2 33s infinite linear; animation-delay: -27s; }
+
+/* Fifth row */
+.slide:nth-child(25) { top: 74%; left: -250px; animation: slideRow1 31s infinite linear; animation-delay: 0s; }
+.slide:nth-child(26) { top: 74%; left: -250px; animation: slideRow1 31s infinite linear; animation-delay: -5s; }
+.slide:nth-child(27) { top: 74%; left: -250px; animation: slideRow1 31s infinite linear; animation-delay: -10s; }
+.slide:nth-child(28) { top: 74%; left: -250px; animation: slideRow1 31s infinite linear; animation-delay: -15s; }
+.slide:nth-child(29) { top: 74%; left: -250px; animation: slideRow1 31s infinite linear; animation-delay: -20s; }
+.slide:nth-child(30) { top: 74%; left: -250px; animation: slideRow1 31s infinite linear; animation-delay: -26s; }
+
+/* Extra images distributed */
+.slide:nth-child(31) { top: 11%; left: -250px; animation: slideRow2 34s infinite linear; animation-delay: -3s; }
+.slide:nth-child(32) { top: 29%; left: -250px; animation: slideRow1 36s infinite linear; animation-delay: -8s; }
+.slide:nth-child(33) { top: 47%; left: -250px; animation: slideRow2 29s infinite linear; animation-delay: -13s; }
+.slide:nth-child(34) { top: 65%; left: -250px; animation: slideRow1 33s infinite linear; animation-delay: -19s; }
+
+@keyframes slideRow1 {
+    from { 
+        left: -300px;
+        transform: rotate(-3deg);
+    }
+    to { 
+        left: 100%;
+        transform: rotate(3deg);
+    }
+}
+
+@keyframes slideRow2 {
+    from { 
+        left: -300px;
+        transform: rotate(2deg);
+    }
+    to { 
+        left: 100%;
+        transform: rotate(-2deg);
+    }
+}
+
+        .hero-image {
+            width: clamp(200px, 50vw, 300px);
+            height: clamp(200px, 50vw, 300px);
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 2rem;
+            z-index: 1;
+            animation: fadeIn 2s ease 0.5s both, float 3s ease-in-out infinite;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .login-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: clamp(2rem, 5vw, 3rem);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1;
+            animation: fadeIn 2s ease 1s both;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 1rem 1.5rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            border-radius: 5px;
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #fff;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        button {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 300px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #ddd;
+            transform: translateY(-2px);
+        }
+
+        .error {
+            color: #ff6b6b;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Message Section */
+        #message-section {
+            min-height: 100vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        .message-container {
+            max-width: 900px;
+            text-align: left;
+            animation: fadeIn 2s ease;
+            position: relative;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.3);
+            padding: clamp(2rem, 4vw, 4rem);
+            border-radius: 20px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        .message-title {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 2rem;
+            letter-spacing: 4px;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .message-text {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            line-height: 1.9;
+            letter-spacing: 0.5px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+            white-space: pre-line;
+        }
+
+        .message-text .line {
+            opacity: 0;
+            display: block;
+            animation: revealLine 0.5s forwards;
+        }
+
+        @keyframes revealLine {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .message-text::first-line {
+            font-weight: 400;
+        }
+
+        .scroll-indicator {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            opacity: 0.7;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Gallery Section */
+        #gallery-section {
+            display: none;
+            padding: 4rem 2rem;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 3rem;
+            letter-spacing: 4px;
+            font-weight: 300;
+        }
+
+        .gallery-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: clamp(2rem, 4vw, 3rem);
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: clamp(1rem, 3vw, 2rem);
+        }
+
+        .gallery-item {
+            width: clamp(200px, 45vw, 280px);
+            background: #fff;
+            padding: 15px 15px 60px 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease both;
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            width: 80px;
+            height: 25px;
+            background: rgba(200, 200, 180, 0.6);
+            border-radius: 2px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item:nth-child(1) { 
+            transform: rotate(-3deg);
+            animation-delay: 0.1s; 
+        }
+        .gallery-item:nth-child(2) { 
+            transform: rotate(2deg);
+            animation-delay: 0.2s; 
+        }
+        .gallery-item:nth-child(3) { 
+            transform: rotate(-2deg);
+            animation-delay: 0.3s; 
+        }
+        .gallery-item:nth-child(4) { 
+            transform: rotate(4deg);
+            animation-delay: 0.4s; 
+        }
+        .gallery-item:nth-child(5) { 
+            transform: rotate(-4deg);
+            animation-delay: 0.5s; 
+        }
+        .gallery-item:nth-child(6) { 
+            transform: rotate(3deg);
+            animation-delay: 0.6s; 
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.1) rotate(0deg) !important;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            z-index: 10;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: clamp(200px, 40vw, 280px);
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-caption {
+            position: absolute;
+            bottom: 5px;
+            left: 15px;
+            right: 15px;
+            text-align: center;
+            font-family: 'Georgia', serif;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            color: #333;
+            padding: 5px;
+        }
+
+        .gallery-caption2 {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            text-align: center;
+            font-family: 'Georgia', serif;
+            font-size: clamp(0.8rem, 2vw, 0.9rem);
+            color: #333;
+            padding: 5px;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                width: 150px;
+                height: 150px;
+            }
+
+            .birthday-text {
+                margin-bottom: 1rem;
+                padding: 0 1rem;
+            }
+
+            .hero-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .message-container {
+                padding: 2rem 1.5rem;
+            }
+
+            .gallery-item {
+                width: 90vw;
+                max-width: 300px;
+            }
+
+            .gallery-item img {
+                height: 280px;
+            }
+
+            .gallery-grid {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .login-box {
+                padding: 1.5rem;
+            }
+
+            input, button {
+                font-size: 0.9rem;
+            }
+
+            .gallery-item {
+                padding: 12px 12px 50px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Music -->
+    <audio id="bgMusic" loop>
+        <source src="song4.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="bgMusic2" loop>
+        <source src="song.mp3" type="audio/mpeg">
+    </audio>
+    
+    <!-- Login Section -->
+    <section id="login-section">
+        <div class="sliding-images">
+            <div class="slide"><img src="1.jpeg" alt=""></div>
+            <div class="slide"><img src="2.jpeg" alt=""></div>
+            <div class="slide"><img src="3.jpeg" alt=""></div>
+            <div class="slide"><img src="4.jpeg" alt=""></div>
+            <div class="slide"><img src="5.jpeg" alt=""></div>
+            <div class="slide"><img src="6.jpeg" alt=""></div>
+            <div class="slide"><img src="7.jpeg" alt=""></div>
+            <div class="slide"><img src="8.jpeg" alt=""></div>
+            <div class="slide"><img src="9.jpeg" alt=""></div>
+            <div class="slide"><img src="10.jpeg" alt=""></div>
+            <div class="slide"><img src="11.jpeg" alt=""></div>
+            <div class="slide"><img src="12.jpeg" alt=""></div>
+            <div class="slide"><img src="13.jpeg" alt=""></div>
+            <div class="slide"><img src="14.jpeg" alt=""></div>
+            <div class="slide"><img src="15.jpeg" alt=""></div>
+            <div class="slide"><img src="16.jpeg" alt=""></div>
+            <div class="slide"><img src="17.jpeg" alt=""></div>
+            <div class="slide"><img src="18.jpeg" alt=""></div>
+            <div class="slide"><img src="19.jpeg" alt=""></div>
+            <div class="slide"><img src="20.jpeg" alt=""></div>
+            <div class="slide"><img src="21.jpeg" alt=""></div>
+            <div class="slide"><img src="22.jpeg" alt=""></div>
+            <div class="slide"><img src="23.jpeg" alt=""></div>
+            <div class="slide"><img src="24.jpeg" alt=""></div>
+            <div class="slide"><img src="60.jpeg" alt=""></div>
+            <div class="slide"><img src="66.jpeg" alt=""></div>
+            <div class="slide"><img src="64.jpeg" alt=""></div>
+            <div class="slide"><img src="69.jpeg" alt=""></div>
+            <div class="slide"><img src="40.jpeg" alt=""></div>
+            <div class="slide"><img src="41.jpeg" alt=""></div>
+            <div class="slide"><img src="42.jpeg" alt=""></div>
+            <div class="slide"><img src="43.jpeg" alt=""></div>
+            <div class="slide"><img src="44.jpeg" alt=""></div>
+            <div class="slide"><img src="49.jpeg" alt=""></div>
+
+        </div>
+        
+        <div style="display: flex; flex-direction: column; align-items: center; z-index: 1;">
+            <img src="26.jpeg" alt="♥" class="hero-image" onerror="this.style.display='none'">
+            
+            <h1 class="birthday-text">
+                HAPPY<span class="heart">♥</span>BIRTHDAY ALECKS
+            </h1>
+            
+            <div class="login-box">
+                <input type="password" id="password" placeholder="YUNG CALLSIGN NATIN(MMDDYYYY)" />
+                <button onclick="login()">ENTER</button>
+                <p class="error hidden" id="error">Incorrect password. Try again ♥</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message Section -->
+    <section id="message-section">
+        <video id="videoBackground" class="video-background" muted playsinline></video>
+        
+        <div class="message-container">
+            <h2 class="message-title">FOR SW EUS ALECKS </h2>
+            <div class="message-text" id="typewriterText"></div>
+            <p class="scroll-indicator">↓ Scroll down for memories ↓</p>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery-section">
+        <h2 class="gallery-title">Our Moments</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="21.jpeg" alt="">
+                <div class="gallery-caption">First meet tagaytay nung nakita kita nung araw nato sabi ko lord ito nayun thank you</div>
+            </div>
+            <div class="gallery-item">
+                <img src="24.jpeg" alt="">
+                <div class="gallery-caption2">First Flower that i gaved you</div>
+            </div>
+            <div class="gallery-item">
+                <img src="29.jpeg" alt="">
+                <div class="gallery-caption2">First Date haha na nahaluan issue ung pic haha</div>
+            </div>
+            <div class="gallery-item">
+                <img src="30.jpeg" alt="">
+                <div class="gallery-caption2">Geng geng pareho ♥</div>
+            </div>
+            <div class="gallery-item">
+                <img src="22.jpeg" alt="">
+                <div class="gallery-caption2">Tambay 711 para mag charge haha tas scam charger</div>
+            </div>
+            <div class="gallery-item">
+                <img src="40.jpeg" alt="">
+                <div class="gallery-caption">Unang hike ko tas kasama pa kita ULAP</div>
+            </div>
+            <div class="gallery-item">
+                <img src="41.jpeg" alt="">
+                <div class="gallery-caption">Hehe kilig not expected na magiging clingy ka sakin this day </div>
+            </div>
+            <div class="gallery-item">
+                <img src="42.jpeg" alt="">
+                <div class="gallery-caption2">parang harley at joker and galawan</div>
+            </div>
+            <div class="gallery-item">
+                <img src="43.jpeg" alt="">
+                <div class="gallery-caption2">I LOVE YOU ALECKS</div>
+            </div>
+            <div class="gallery-item">
+                <img src="44.jpeg" alt="">
+                <div class="gallery-caption2">wacky yarn</div>
+            </div>
+            <div class="gallery-item">
+                <img src="46.jpeg" alt="">
+                <div class="gallery-caption2">swerte kong kumag hahahah ang ganda mo</div>
+            </div>
+            <div class="gallery-item">
+                <img src="48.jpeg" alt="">
+                <div class="gallery-caption2">Ganda ng view ko hehe I love you</div>
+            </div>
+            <div class="gallery-item">
+                <img src="49.jpeg" alt="">
+                <div class="gallery-caption2">sweet naman di ba tayo langgamin nyan?</div>
+            </div>
+            <div class="gallery-item">
+                <img src="50.jpeg" alt="">
+                <div class="gallery-caption2">sino ka po dyan?</div>
+            </div>
+            <div class="gallery-item">
+                <img src="54.jpeg" alt="">
+                <div class="gallery-caption2">everyone adores you atleast i do hehe</div>
+            </div>
+            <div class="gallery-item">
+                <img src="57.jpeg" alt="">
+                <div class="gallery-caption2">Unang dalaw sa southwoods haha</div>
+            </div>
+            <div class="gallery-item">
+                <img src="61.jpeg" alt="">
+                <div class="gallery-caption2">second flower na binigay ko sayo haha</div>
+            </div>
+            <div class="gallery-item">
+                <img src="60.jpeg" alt="">
+                <div class="gallery-caption2">Unang FT sa SW</div>
+            </div>
+            <div class="gallery-item">
+                <img src="62.jpeg" alt="">
+                <div class="gallery-caption2">pagod na pero para sayo idol hahaha</div>
+            </div>
+            <div class="gallery-item">
+                <img src="63.jpeg" alt="">
+                <div class="gallery-caption2">flower delivery po from BENCH to SW</div>
+            </div>
+            <div class="gallery-item">
+                <img src="68.jpeg" alt="">
+                <div class="gallery-caption">thank you sa mga memories alecks hehe marami pang madadagdag dyan promise</div>
+            </div>
+            <div class="gallery-item">
+                <img src="66.jpeg" alt="">
+                <div class="gallery-caption2">Photos cannot described yung happiness ko kapag kasama ka</div>
+            </div>
+            <div class="gallery-item">
+                <img src="69.jpeg" alt="">
+                <div class="gallery-caption2">pagod pero masaya hahahah</div>
+            </div>
+            <div class="gallery-item">
+                <img src="70.jpeg" alt="">
+                <div class="gallery-caption2">Mahal kita wala nang atrasan to</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Set the correct password here (her birth date in DDMMYYYY format)
+        const correctPassword = '12092025'; // CHANGE THIS to her birth date
+
+        // Video playlist - Add your video filenames here
+        const videoPlaylist = [
+            'mov.mp4',
+            'mov1.mp4',
+            'mov10.mp4',
+            'mov2.mp4',
+            'mov3.mp4',
+            'mov6.mp4',
+            'mov8.mp4',
+            'mov9.mp4'
+        ];
+        
+        let currentVideoIndex = 0;
+        const videoElement = document.getElementById('videoBackground');
+        
+        // Function to play next video in playlist
+        function playNextVideo() {
+            if (currentVideoIndex < videoPlaylist.length) {
+                videoElement.src = videoPlaylist[currentVideoIndex];
+                videoElement.play().catch(err => console.log('Video autoplay prevented'));
+                currentVideoIndex++;
+            } else {
+                // Loop back to first video
+                currentVideoIndex = 0;
+                playNextVideo();
+            }
+        }
+        
+        // When current video ends, play next one
+        videoElement.addEventListener('ended', playNextVideo);
+
+        // Typewriter effect - line by line
+        const message = `Hi Alecks,
+
+First of all, happy birthday.
+
+25 ka na halfway there, congrats 😄
+
+Habang sinusulat ko 'to, hindi ko rin alam kung saan magsisimula. Siguro dahil ang bilis ng lahat para sa atin. Parang bigla na lang… nandito na tayo. Parang isang iglap na naging malinaw ang lahat.
+
+I feel like We've known each other for a long time, and maybe ganun talaga kapag nahanap mo na yung taong para sa'yo. Everything feels natural, effortless—parang matagal nang magkakilala ang mga puso natin, kahit ngayon lang talaga sila nagtagpo.
+
+This is your day, and I genuinely hope na maging masaya ka sa life, sa career, sa lahat ng tahimik at malalaking pangarap mo. Natuwa talaga ako nung tinanong kita kung anong goal mo sa buhay, tapos sabi mo lang, "Gusto ko lang maging masaya."
+
+Simple words, pero mabigat ang ibig sabihin. Nakakatawa, pero ayun din talaga yung matagal ko nang hinihiling. Alam naman natin pareho na mahirap hanapin ang tunay na happiness, pero look at us—nandito ka, nandito ako. Let's try to find that happiness together, dahandahan, walang pilitan.
+
+I'm so grateful na dumating ka sa buhay ko.
+
+Before you, pakiramdam ko parang dahon lang ako sumasabay lang sa agos ng buhay, walang direksyon. Pero nung nakilala kita, may nagbago. You showed me that there's more to life more to feel, more to explore, more to hope for. Parang biglang may dahilan para huminto, tumingin, at piliing manatili.
+
+Thank you for allowing me to know you lahat ng pain, hardships, at struggles mo mula pagkabata. Gusto ko talagang maging masaya ka.
+
+Tandaan mo, hindi ka na nagiisa. Andito na ako. Mas madali talagang inavigate ang buhay kapag may kasama ka, kapag may kahawak kang kamay. And I'm happy na ikaw yung kasama ko sana ikaw din, masaya na ako yun.
+
+I know this relationship won't always be easy. May struggles, may suffering but there will also be happiness, laughter, and love. Sana kapag dumating yung mga araw na mabigat, lagi nating piliin ang isa't isa.
+
+As someone once said, "The world may fall apart, but as long as we hold on to each other, we'll be fine." At gusto kong paniwalaan 'yon—kasama ka.
+
+I love you, Alecks.
+
+I really do. I mean it every time I say it palaging galing sa puso, palaging totoo.
+
+Sana hindi mo na masyadong ipressure ang sarili mo sa mga bagay na hindi mo kontrolado. Sana matutunan mong bitawan ang mga sakit na matagal mo nang dala. Remember, hardships are always part of life the ups and downs teach us how to be grateful for the good days, and how to hold them a little longer.
+
+You are a great person. I see it. People feel it. And I'm thankful sobrang thankful—that you chose me. Sa dami ng tao sa mundo, ako yung pinili mo.
+
+You are my plot twist this year an unexpected chapter I never saw coming. Hindi ako naghahanap ng love, pero pinagtapo pa rin tayo ng buhay. Inyeon, ika nga a connection that finds its way, kahit hindi inaasahan.
+
+I'll try my best to make sure na hindi ka na malulungkot. Hindi perpekto, pero totoo. I will always love you.
+
+Happy birthday alecks. Sana maabot mo lahat ng pangarap at mga bagay na pinanghahawakan mo sa buhay. At sana, makasama mo ako sa mga araw at panahong iyon habang tinutupad mo ang mga iyon.
+
+Maraming salamat sa lahat sa pagmamahal, sa tiwala, at sa mga bagong memories na ginawa at gagawin pa natin. Thank you for risking your love for me. If you only knew how much you changed my perspective in life and gave it meaning again.
+
+Happiest Birthday, ALECKS. 💙✨`;
+
+        function typewriterEffect() {
+            const lines = message.split('\n');
+            const container = document.getElementById('typewriterText');
+            let lineIndex = 0;
+
+            function showNextLine() {
+                if (lineIndex < lines.length) {
+                    const lineSpan = document.createElement('span');
+                    lineSpan.className = 'line';
+                    lineSpan.textContent = lines[lineIndex];
+                    lineSpan.style.animationDelay = '0s';
+                    container.appendChild(lineSpan);
+                    
+                    // Add line break
+                    container.appendChild(document.createTextNode('\n'));
+                    
+                    lineIndex++;
+                    setTimeout(showNextLine, 300); // 300ms delay between lines
+                }
+            }
+
+            showNextLine();
+        }
+
+        // Start music on first user interaction
+        let musicStarted = false;
+        const bgMusic = document.getElementById('bgMusic');
+        const bgMusic2 = document.getElementById('bgMusic2');
+        let currentSong = 1;
+        
+        function startMusic() {
+            if (!musicStarted) {
+                bgMusic.play().catch(err => console.log('Audio autoplay prevented'));
+                musicStarted = true;
+            }
+        }
+        
+        // Switch between songs when one ends
+        bgMusic.addEventListener('ended', function() {
+            bgMusic2.play();
+            currentSong = 2;
+        });
+        
+        bgMusic2.addEventListener('ended', function() {
+            bgMusic.play();
+            currentSong = 1;
+        });
+        
+        // Try to start music on any interaction
+        document.addEventListener('click', startMusic);
+        document.addEventListener('keypress', startMusic);
+
+        function login() {
+            startMusic(); // Ensure music starts
+            const password = document.getElementById('password').value;
+            const error = document.getElementById('error');
+            
+            if (password === correctPassword) {
+                document.getElementById('login-section').classList.add('hidden');
+                document.getElementById('message-section').style.display = 'flex';
+                document.getElementById('gallery-section').style.display = 'block';
+                
+                // Start video playlist
+                playNextVideo();
+                
+                // Start typewriter effect
+                setTimeout(typewriterEffect, 1000);
+                
+                // Smooth scroll to message
+                setTimeout(() => {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }, 100);
+            } else {
+                error.classList.remove('hidden');
+                document.getElementById('password').value = '';
+            }
+        }
+
+        // Allow Enter key to submit
+        document.getElementById('password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                login();
+            }
+        });
+    </script>
+</body>
+</html>
